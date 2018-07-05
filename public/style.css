@@ -1,1 +1,86 @@
-ul { list-style: none; }
+body
+{
+    background: url("http://mdbootstrap.com/img/Photos/Others/img%20(42).jpg")center center;
+    /* background-color:red; */
+}
+
+#tweet
+{
+    font:15px Verdana,Helvetica,sans-serif;	
+    background-color:#FFF;
+    position:absolute;
+    top:15%;
+    height:40px;
+    width:80%;
+    left:5%;
+}
+
+#submit
+{
+    font:15px Verdana,Helvetica,sans-serif;	
+    position:absolute;
+	width:7%;
+	height:40px;
+	top:15%;
+	left:86%;
+}
+
+#test
+{
+    position:absolute;
+    top:30%;
+    width:79.55%;
+    left:5.2%;
+    padding-left: 0px;
+    height:430px;
+    overflow: -moz-scrollbars-none;
+    
+}
+
+#list
+{
+    position:absolute;
+    list-style: none; 
+    font:15px Verdana,Helvetica,sans-serif;
+    padding-left: 0px;	
+    width:200%; /*To get rid of the scrollbar */
+    height:430px;
+    background-color:rgb(255, 255, 255,0.2);
+    overflow-y: scroll;
+    
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-moz-scrollbar {
+    display: none;
+}
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+    /* html {overflow: -moz-scrollbars-none;} */
+    /* .scroll_content {
+        position:relative;
+        width:400px;
+        height:414px;
+        top:-17px;
+        padding:20px 10px 20px 10px;
+        overflow-y:auto;
+    } */
+
+#list li 
+{
+padding:10px 0 10px 20px;
+color:rgb(0,0,0);
+display:block;
+width:100%;
+padding: .2em 0.8em;
+background-color:rgba(255, 255, 255, 0.4);
+}
+#list li:hover
+{
+background-color:rgb(255, 255, 255,0.8);
+color:rgb(0,0,0);
+}
