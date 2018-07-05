@@ -50,26 +50,6 @@ body
     
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
-::-moz-scrollbar {
-    display: none;
-}
-
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
-    /* html {overflow: -moz-scrollbars-none;} */
-    /* .scroll_content {
-        position:relative;
-        width:400px;
-        height:414px;
-        top:-17px;
-        padding:20px 10px 20px 10px;
-        overflow-y:auto;
-    } */
-
 #list li 
 {
 padding:10px 0 10px 20px;
