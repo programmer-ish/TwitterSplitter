@@ -18,7 +18,18 @@ function postMessage() {
 
 }
 
-
+function enablePopup() {
+    var popup = document.getElementById("popup");
+    var arrow = document.getElementById("arrow");
+    popup.style.display = "block";
+    arrow.style.display = "block";
+}
+function disablePopup() {
+    var popup = document.getElementById("popup");
+    var arrow = document.getElementById("arrow");
+    popup.style.display = "none";
+    arrow.style.display = "none";
+}
 
 function splitMessage(tweet) {
     try {
