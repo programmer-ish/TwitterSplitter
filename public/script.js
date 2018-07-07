@@ -41,37 +41,29 @@ function splitMessage(tweet) {
         else {
             var newTweets = [];
             var difference;
-            console.log("length" + tweet.length);
 
             for (i = 0; ; i++) { // loop for calculating max length of substring without indicator
                 difference = tweet.length - ((46 - (i * 2)) * 9 * (Math.pow(10, i)));
-                console.log("difference" + difference);
                 if (difference < 0) {
                     maxLength = 46 - (i * 2);
                     break;
                 }
             }
-            console.log("maxLength" + maxLength);
 
             for (i = 0, startOfPost = 0, endOfPost = maxLength; endOfPost < tweet.length; startOfPost = endOfPost + 1, endOfPost += maxLength) {
-
-                console.log("endOfPost before lastIndexOf" + endOfPost);
                 endOfPost = tweet.lastIndexOf(" ", endOfPost);
                 if (endOfPost === -1) {
                     enablePopup();
                     return;
                 }
-                console.log("startOfPost " + startOfPost + "endOfPost" + endOfPost);
                 newTweets[i] = tweet.substring(startOfPost, endOfPost);
                 i++;
             }
-            console.log("startOfPost " + startOfPost);
             newTweets[i] = tweet.substring(startOfPost, tweet.length);
             var noOfTweets = newTweets.length;
             for (i = 0, j = 0; i < noOfTweets; i++) {
                 j = i + 1;
                 newTweets[i] = j + "/" + noOfTweets + " " + newTweets[i];
-                console.log("substring lenght" + newTweets[i].length + "substring" + newTweets[i]);
             }
             return newTweets;
         }
