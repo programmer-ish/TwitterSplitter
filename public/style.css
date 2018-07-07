@@ -64,3 +64,29 @@ background-color:rgba(255, 255, 255, 0.4);
 background-color:rgb(255, 255, 255,0.8);
 color:rgb(0,0,0);
 }
+
+#popup {
+    position: absolute;
+    /* display: none; */
+    width:42%;
+    height: 5%;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    background-color:rgba(0, 0, 0, 0.4);
+    top:22.5%;
+    left:4.85%;
+}
+
+#arrow {
+    /* display: none; */
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(0, 0, 0, 0.4);
+    top:21.25%;
+    left:5.3%;
+  }
