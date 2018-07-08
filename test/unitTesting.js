@@ -2,8 +2,10 @@ var _ = require('lodash');
 
 function splitMessage(tweet) {
     try {
-        if (tweet === undefined)
+        if (tweet === undefined || tweet.length === 0 || !/\S/g.test(tweet)) {
+            enablePopup("Sorry cannnot post empty Tweets");
             return undefined;
+        }
 
         if (tweet.length <= 50)
             return [tweet];
@@ -22,8 +24,8 @@ function splitMessage(tweet) {
             for (i = 0, startOfPost = 0, endOfPost = maxLength; endOfPost < tweet.length; startOfPost = endOfPost + 1, endOfPost += maxLength) {
                 endOfPost = tweet.lastIndexOf(" ", endOfPost);
                 if (endOfPost === -1) {
-                    enablePopup();
-                    return;
+                    enablePopup("Message contains a span of non-whitespace characters longer than the tweet character limit");
+                    return undefined;
                 }
                 newTweets[i] = tweet.substring(startOfPost, endOfPost);
                 i++;
@@ -42,12 +44,11 @@ function splitMessage(tweet) {
     }
 }
 
-
 var input, output;
 
 function testSplitMessage(input, output) {
     var output_after_splitting = splitMessage(input);
-    if (_.isEqual(output, output_after_splitting)) { // === will check if the objects are of same instance and return false
+    if (_.isEqual(output, output_after_splitting)) { // === will check if the objects are of same instance and return false, it does deep search
         var tweetOfInvalidLength = _.find(output_after_splitting, function (tweet) { return tweet.length > 50; });
         if (tweetOfInvalidLength === undefined) {
             console.log("Test pass");
@@ -66,7 +67,17 @@ input = undefined;
 output = undefined;
 testSplitMessage(input, output);
 
-//Test 2- Handling tweet of 91 characters
+//Test 2- Handling input of zero length 
+input = "";
+output = undefined;
+testSplitMessage(input, output);
+
+//Test 3- Handling input with only spaces 
+input = "             ";
+output = undefined;
+testSplitMessage(input, output);
+
+//Test 4- Handling tweet of 91 characters
 input = "I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself."
 output = [
     "1/2 I can't believe Tweeter now supports chunking",
@@ -74,22 +85,22 @@ output = [
 ]
 testSplitMessage(input, output);
 
-//Test 3- Hadling Exact 50 characters with no space
+//Test 5- Hadling Exact 50 characters with no space
 input = "Ican'tbelieveTweeternowsupportschunkingmymessages,"
 output = ["Ican'tbelieveTweeternowsupportschunkingmymessages,"]
 testSplitMessage(input, output);
 
-//Test 4- Hadling message containing a span of non-whitespace 51 characters
+//Test 6- Hadling message containing a span of non-whitespace 51 characters
 input = "Ican'tbelieveTweeternowsupportschunkingmymessages,s"
 output = undefined
 testSplitMessage(input, output);
 
-//Test 5- Hadling 49 characters with no space
+//Test 7- Hadling 49 characters with no space
 input = "Ican'tbelieveTweeternowsupportschunkingmymessages"
 output = ["Ican'tbelieveTweeternowsupportschunkingmymessages"]
 testSplitMessage(input, output);
 
-//Test 6- Handling tweet of 5000 characters, part indicators more than 4 characters
+//Test 8- Handling tweet of 5000 characters, part indicators more than 4 characters
 input = "GFG is dedicated to bringing fashion online in high growth markets and offers brands the " +
     "chance to enter the fashion e-commerce sector in highly promising economies. We operate with five " +
     "branded platforms in 24 countries and employ over 9,000 people. Working closely with our partners, we " +
