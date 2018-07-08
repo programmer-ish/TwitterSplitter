@@ -18,9 +18,10 @@ function postMessage() {
 
 }
 
-function enablePopup() {
+function enablePopup(displayText) {
     var popup = document.getElementById("popup");
     var arrow = document.getElementById("arrow");
+    popup.innerHTML = " " + '<i class="fa fa-warning"></i>' + displayText + '&nbsp';
     popup.style.display = "block";
     arrow.style.display = "block";
 }
@@ -33,8 +34,10 @@ function disablePopup() {
 
 function splitMessage(tweet) {
     try {
-        if (tweet === undefined)
+        if (tweet === undefined || tweet.length === 0 || !/\S/g.test(tweet)) {
+            enablePopup(" Sorry cannot post empty Tweets");
             return undefined;
+        }
 
         if (tweet.length <= 50)
             return [tweet];
@@ -53,8 +56,8 @@ function splitMessage(tweet) {
             for (i = 0, startOfPost = 0, endOfPost = maxLength; endOfPost < tweet.length; startOfPost = endOfPost + 1, endOfPost += maxLength) {
                 endOfPost = tweet.lastIndexOf(" ", endOfPost);
                 if (endOfPost === -1) {
-                    enablePopup();
-                    return;
+                    enablePopup(" Message contains a span of non-whitespace characters longer than the tweet character limit");
+                    return undefined;
                 }
                 newTweets[i] = tweet.substring(startOfPost, endOfPost);
                 i++;
