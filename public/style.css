@@ -73,7 +73,7 @@ color:rgb(0,0,0);
     text-align: center;
     border-radius: 6px;
     padding: 8px 8px;
-    background-color:rgba(0, 0, 0, 0.4);
+    background-color:rgb(6, 72, 110,1);
     top:21.9%;
     left:4.85%;
 }
@@ -85,7 +85,8 @@ color:rgb(0,0,0);
     height: 0; 
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 8px solid rgba(6, 72, 110, 1);
     top:20.8%;
     left:5.3%;
+    overflow: hidden;
   }
