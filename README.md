@@ -14,8 +14,8 @@ This is 91 characters excluding the surrounding quotes. When the user presses se
 ## Project setup and execution
 
 ### Technology stack 
-  - **Frontend libraries** : JQuery, bootstrap, font awesome
-  - **Backend Server** : Node.js + express (To serve static content)
+  - **Frontend libraries** : Bootstrap, Font Awesome, JQuery
+  - **Backend Server** : Node.js + Express (To serve static content)
 
 ### Project Structure
 ```
@@ -31,7 +31,8 @@ This is 91 characters excluding the surrounding quotes. When the user presses se
 1. Prerequisites - Install node ( > 6.X ) and npm
 2. Git clone the repositroy
 3. Run ```npm install ``` to install the required dependencies
-4. Open browser http://localhost:8080
+4. Run ```node server.js ```
+5. Open browser http://localhost:8080
 
 
 ### Run test cases
