@@ -25,7 +25,7 @@ function splitMessage(tweet) {
 
             for (i = 0, startOfPost = 0, endOfPost = maxLength; endOfPost < tweet.length; startOfPost = endOfPost + 1, endOfPost += maxLength) {
                 endOfPost = tweet.lastIndexOf(" ", endOfPost);
-                if (endOfPost === -1) {
+                if (endOfPost === -1 || endOfPost < startOfPost) {
                     enablePopup("Message contains a span of non-whitespace characters longer than the tweet character limit");
                     return undefined;
                 }
@@ -126,3 +126,7 @@ output = [
 ]
 testSplitMessage(input, output);
 
+//Test 9- Handling cases where continuous string exists after splitting successfully previosuly 
+input = "aaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+output = undefined;
+testSplitMessage(input, output);

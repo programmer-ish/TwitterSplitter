@@ -72,7 +72,7 @@ function splitMessage(tweet) {
                 endOfPost = tweet.lastIndexOf(" ", endOfPost);
 
                 // When tweet has no space to split
-                if (endOfPost === -1) {
+                if (endOfPost === -1 || endOfPost < startOfPost) {
                     enablePopup(" Message contains a span of non-whitespace characters longer than the tweet character limit");
                     return undefined;
                 }
