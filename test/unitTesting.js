@@ -1,5 +1,7 @@
 var _ = require('lodash');
 
+function enablePopup(displayText) { return; }
+
 function splitMessage(tweet) {
     try {
         if (tweet === undefined || tweet.length === 0 || !/\S/g.test(tweet)) {
@@ -48,7 +50,10 @@ var input, output;
 
 function testSplitMessage(input, output) {
     var output_after_splitting = splitMessage(input);
-    if (_.isEqual(output, output_after_splitting)) { // === will check if the objects are of same instance and return false, it does deep search
+
+    //  Not using ===  because that will check if the objects are of same instance and return false
+    //  isEqual does deep search
+    if (_.isEqual(output, output_after_splitting)) {
         var tweetOfInvalidLength = _.find(output_after_splitting, function (tweet) { return tweet.length > 50; });
         if (tweetOfInvalidLength === undefined) {
             console.log("Test pass");
@@ -85,7 +90,7 @@ output = [
 ]
 testSplitMessage(input, output);
 
-//Test 5- Hadling Exact 50 characters with no space
+//Test 5- Hadling exact 50 characters with no space
 input = "Ican'tbelieveTweeternowsupportschunkingmymessages,"
 output = ["Ican'tbelieveTweeternowsupportschunkingmymessages,"]
 testSplitMessage(input, output);
